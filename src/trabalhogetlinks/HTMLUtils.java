@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -20,7 +21,7 @@ public class HTMLUtils {
 
     public List<String> extractLinks() throws IOException {
         
-        HashSet result = new HashSet();
+        Set result = new HashSet();
 
         String url = "http://" + domain;
         
@@ -36,8 +37,9 @@ public class HTMLUtils {
                 result.add( urlOfLink );
             }
         }
-
-        return result;
+        
+        List<String> finalResult = new ArrayList<>(result);
+        return finalResult;
     }
     
     public static boolean isInDomain( String link ){
