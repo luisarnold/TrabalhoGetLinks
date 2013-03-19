@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class TrabalhoGetLinks {
 
-    private ArrayList<String> links;
+    private static ArrayList<String> linksFiltered;
     
     private TrabalhoGetLinks() {
     }
@@ -14,10 +14,13 @@ public class TrabalhoGetLinks {
 
         HTMLUtils htmlUtils = new HTMLUtils("www.feevale.br");
         
-        List<String> links = htmlUtils.extractLinks();
+        ArrayList<String> links = htmlUtils.extractLinks();
+        
+        linksFiltered = links;
         for (String link : links) {
-            links.add(link);
             System.out.println(link);
         }
+        
+        System.out.println("Total: " + linksFiltered.size());
     }
 }

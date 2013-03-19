@@ -13,15 +13,16 @@ import org.jsoup.select.Elements;
 
 public class HTMLUtils {
 
-    private static String domain = "www.feevale.br";
+    private static String domain;
     
     public HTMLUtils(String domain) {
         this.domain = domain;
     }
 
-    public List<String> extractLinks() throws IOException {
+    public ArrayList<String> extractLinks() throws IOException {
         
-        Set result = new HashSet();
+        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> other = new ArrayList<String>();
 
         String url = "http://" + domain;
         
@@ -31,21 +32,21 @@ public class HTMLUtils {
 
         // href ...
         for (Element link : links) {
+            
             String urlOfLink = link.attr("abs:href").toString();
             
             if (!urlOfLink.equals("") && isInDomain( urlOfLink ) && !result.contains(urlOfLink) ) {
                 result.add( urlOfLink );
+            }else{
+                other.add( urlOfLink );
             }
         }
         
-        List<String> finalResult = new ArrayList<>(result);
-        return finalResult;
+        return result;
     }
     
     public static boolean isInDomain( String link ){
-        if( link.contains( domain ) ){
-            return true;
-        }
-        return false;
+        // implementar validacao de domínio...
+        return true;
     }
 }
