@@ -21,8 +21,9 @@ public class TrabalhoGetLinks {
             System.out.println(link);
         }
         
-        System.out.println("Total: " + linksFiltered.size());
+        //System.out.println("Total: " + linksFiltered.size());
+		System.out.println("bla bla bla");
     }
 }
 
-	// testando e publicando novamente
+	
